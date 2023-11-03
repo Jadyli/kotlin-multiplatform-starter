@@ -1,0 +1,30 @@
+### macOS template
+*.DS_Store
+
+# IntelliJ project files
+!.idea/
+.idea/*
+!.idea/codeStyles/
+!.idea/encodings.xml
+!.idea/copyright/
+*.iml
+*.hprof
+
+# Gradle files
+.gradle/
+build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# External native build folder generated in Android Studio 2.2 and later
+.externalNativeBuild
+
+# kmm
+.cxx
+**/*.podspec
+iosApp/Podfile.lock
+iosApp/Pods/*
+iosApp/iosApp.xcworkspace/*
+iosApp/iosApp.xcodeproj/*
+!iosApp/iosApp.xcodeproj/project.pbxproj
