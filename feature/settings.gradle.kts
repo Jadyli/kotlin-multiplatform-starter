@@ -55,5 +55,6 @@ dependencyResolutionManagement {
 rootProject.name = "feature"
 
 include(
-    ":startup"
+    ":startup",
+    ":main-ui"
 )

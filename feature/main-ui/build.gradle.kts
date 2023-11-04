@@ -7,7 +7,6 @@ plugins {
     alias(sharedCommonLibs.plugins.kotlin.multiplatform)
     alias(sharedCommonLibs.plugins.kotlin.native.cocoapods)
     alias(sharedCommonLibs.plugins.ksp)
-    alias(sharedCommonLibs.plugins.kotlin.serialization)
 }
 
 kotlin {
@@ -19,7 +18,6 @@ kotlin {
     // wasmWasi() {
     //     nodejs()
     // }
-
     iosX64()
     iosArm64()
     iosSimulatorArm64()
@@ -31,7 +29,7 @@ kotlin {
         ios.deploymentTarget = "14.1"
         podfile = file(rootDir.parentFile.path + "/iosApp/Podfile")
         framework {
-            baseName = "http"
+            baseName = "main-ui"
         }
     }
 
@@ -45,29 +43,26 @@ kotlin {
                 api(compose.material3)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 api(compose.components.resources)
-                api(sharedCommonLibs.kotlinx.serialization)
                 api(sharedCommonLibs.ktor.client.core)
                 api(sharedCommonLibs.ktor.client.auth)
-                api(sharedCommonLibs.ktor.serialization.kotlinx.json)
+                api(bizLibs.framework.http)
                 api(sharedCommonLibs.ktor.client.content.negotiation)
-                api(sharedCommonLibs.ktor.client.resources)
-                api(sharedCommonLibs.ktor.client.logging)
-                api(sharedCommonLibs.ktor.client.encoding)
+                api(sharedCommonLibs.ktor.serialization.kotlinx.json)
                 api(sharedCommonLibs.koin.core)
                 api(sharedCommonLibs.koin.annotations)
+                api(sharedCommonLibs.molecule)
             }
         }
         val jvmCommonMain by creating {
             dependsOn(commonMain)
             dependencies {
-                api(sharedCommonLibs.ktor.client.okhttp.get().toString()) {
-                    exclude(group = "com.squareup.okhttp3")
-                }
+                api(sharedCommonLibs.ktor.client.okhttp.get().toString())
             }
         }
         val androidMain by getting {
             dependsOn(jvmCommonMain)
             dependencies {
+                api(androidCommonLibs.androidx.annotation)
                 api(androidCommonLibs.androidx.core.ktx)
                 api(compose.uiTooling)
             }
@@ -110,7 +105,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.jady.lib.framework.http"
+    namespace = "com.missevan.feature.main.ui"
 }
 
 dependencies {

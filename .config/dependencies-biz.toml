@@ -1,10 +1,12 @@
 [versions]
 feature-startup = "0.1.0-SNAPSHOT"
+feature-main-ui = "0.1.0-SNAPSHOT"
 framework-http = "0.1.0-SNAPSHOT"
 
 [libraries]
 framework-http = { module = "com.jady.lib.framework:http", version.ref = "framework-http" }
 feature-startup = { module = "com.jady.feature:startup", version.ref = "feature-startup" }
+feature-main-ui = { module = "com.jady.feature:main-ui", version.ref = "feature-main-ui" }
 
 [plugins]
 
