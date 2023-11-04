@@ -7,6 +7,7 @@ plugins {
     alias(sharedCommonLibs.plugins.kotlin.multiplatform)
     alias(sharedCommonLibs.plugins.kotlin.native.cocoapods)
     alias(sharedCommonLibs.plugins.ksp)
+    alias(sharedCommonLibs.plugins.kotlin.serialization)
 }
 
 kotlin {

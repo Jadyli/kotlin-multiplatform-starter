@@ -85,5 +85,6 @@ val taskGroup = "custom"
 
 tasks.register("publishAllModule") {
     group = taskGroup
-    setDependsOn(subprojects.mapNotNull { it.tasks.findByName("publishAllPublicationsToXXXRepository") })
+    // setDependsOn(subprojects.mapNotNull { it.tasks.findByName("publishAllPublicationsToXXXRepository") })
+    setDependsOn(subprojects.mapNotNull { it.tasks.findByName("publishToMavenLocal") })
 }

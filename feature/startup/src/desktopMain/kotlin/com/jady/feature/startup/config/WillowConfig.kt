@@ -4,7 +4,6 @@
 
 package com.jady.feature.startup.config
 
-import com.jady.lib.framework.willow.BaseDesktopWillowConfig
 import io.ktor.client.*
 import io.ktor.client.engine.okhttp.*
 import org.koin.core.annotation.Factory
