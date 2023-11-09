@@ -5,7 +5,7 @@
                 RuntimeVisibleParameterAnnotations,
                 RuntimeVisibleTypeAnnotations,
                 Signature
--keep class com.jady.feature.startup.ui.** {
+-keep class com.jady.feature.main.ui.** {
  !private *;
  private static *;
 }

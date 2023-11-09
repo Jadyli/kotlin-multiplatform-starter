@@ -39,6 +39,7 @@ dependencyResolutionManagement {
         create("bizLibs") { from(files("${rootDir.path}/.config/dependencies-biz.toml")) }
         create("androidCommonLibs") { from(files("${rootDir.path}/.config/dependencies-android-common.toml")) }
         create("sharedCommonLibs") { from(files("${rootDir.path}/.config/dependencies-shared-common.toml")) }
+        create("desktopLibs") { from(files("${rootDir.path}/.config/dependencies-desktop.toml")) }
     }
 }
 

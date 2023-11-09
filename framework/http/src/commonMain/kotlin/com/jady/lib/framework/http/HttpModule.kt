@@ -12,6 +12,8 @@ import io.ktor.client.plugins.compression.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*
 import io.ktor.client.plugins.resources.*
+import io.ktor.client.request.*
+import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
 import org.koin.core.annotation.ComponentScan
@@ -28,6 +30,9 @@ import org.koin.core.annotation.Module
 class HttpModule {
     @Factory
     fun createHttpClient(): HttpClient = createClient { willowConfig ->
+        defaultRequest {
+            header(HttpHeaders.ContentType, ContentType.Application.Json)
+        }
         install(HttpTimeout) {
             requestTimeoutMillis = willowConfig.readTimeOut
             connectTimeoutMillis = willowConfig.connectTimeOut

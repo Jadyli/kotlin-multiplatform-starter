@@ -2,11 +2,15 @@ package com.jady.feature.main.ui
 
 import io.ktor.client.*
 import io.ktor.client.call.*
-import io.ktor.client.plugins.resources.*
+import io.ktor.client.plugins.*
+import io.ktor.client.plugins.resources.Resources
 import io.ktor.client.request.*
+import io.ktor.client.statement.*
+import io.ktor.http.*
 import io.ktor.resources.*
 import kotlinx.serialization.Serializable
 import org.koin.mp.KoinPlatform
+import io.ktor.client.request.get as getBuilder
 
 /**
  * @author jady
@@ -16,19 +20,49 @@ import org.koin.mp.KoinPlatform
 val httpClient = KoinPlatform.getKoin().get<HttpClient>()
 val apiService = ApiService()
 
-@Resource("https://www.random.org/")
+@Serializable
 class RandomNumber {
-    @Resource("integers")
-    class RandomInteger(val parent: RandomNumber = RandomNumber()) {
-        @Serializable
-        data class RandomIntegerParam(val num: Int, val col: Int, val base: Int, val format: String, val min: Int, val max: Int)
+    @Resource("integers/")
+    class RandomInteger(
+        val parent: RandomNumber = RandomNumber(),
+        val num: Int = 1,
+        val col: Int = 1,
+        val base: Int = 10,
+        val format: String = "plain",
+        val min: Int,
+        val max: Int
+    )
+}
+
+abstract class IApiService(baseUrl: String) {
+    protected val urlBuilder = Url(baseUrl)
+
+    protected suspend inline fun <reified T : Any> HttpClient.get(
+        resource: T,
+        builder: HttpRequestBuilder.() -> Unit = {}
+    ): HttpResponse {
+        val resources = resources()
+        return getBuilder {
+            url {
+                protocol = urlBuilder.protocol
+                host = urlBuilder.host
+                port = urlBuilder.port
+                encodedPath = urlBuilder.encodedPath
+            }
+            href(resources.resourcesFormat, resource, url)
+            builder()
+        }
     }
 }
 
-class ApiService {
-    suspend fun getRandomInteger(min: Int, max: Int): Int = httpClient.get(RandomNumber.RandomInteger()) {
-        setBody(RandomNumber.RandomInteger.RandomIntegerParam(num = 1, col = 1, base = 10, format = "plain", min = min, max = max))
-    }.body()
+class ApiService : IApiService("https://www.random.org/") {
+    suspend fun getRandomInteger(min: Int, max: Int): Int =
+        httpClient.get(RandomNumber.RandomInteger(min = min, max = max)).body<String>().trim().toInt()
+}
+
+@PublishedApi
+internal fun HttpClient.resources(): io.ktor.resources.Resources {
+    return pluginOrNull(Resources) ?: throw IllegalStateException("Resources plugin is not installed")
 }
 
 

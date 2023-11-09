@@ -11,14 +11,17 @@ kotlin {
     jvm("desktop")
     sourceSets {
         commonMain {
+            kotlin.srcDir("build/generated/ksp/metadata/commonMain")
             dependencies {
                 api(bizLibs.framework.http)
                 api(bizLibs.feature.main.ui)
+                api(bizLibs.feature.startup)
             }
         }
         val desktopMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
+                implementation(desktopLibs.logback.classic)
             }
         }
     }

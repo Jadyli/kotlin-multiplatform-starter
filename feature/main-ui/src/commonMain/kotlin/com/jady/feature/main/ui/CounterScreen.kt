@@ -13,13 +13,17 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import app.cash.molecule.RecompositionMode
 import app.cash.molecule.launchMolecule
-import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -30,11 +34,14 @@ import kotlinx.coroutines.flow.StateFlow
  */
 @Composable
 fun CounterScreen() {
-    val scope = MainScope()
-    val eventsFlow = MutableSharedFlow<CounterEvent>(extraBufferCapacity = 20)
-    val models = scope.launchMolecule(mode = RecompositionMode.ContextClock) {
-        CounterPresenter(eventsFlow, apiService)
+    val scope = remember { CoroutineScope(SupervisorJob() + Dispatchers.Main) }
+    val eventsFlow = remember { MutableSharedFlow<CounterEvent>(extraBufferCapacity = 20) }
+    val models = remember {
+        scope.launchMolecule(mode = RecompositionMode.Immediate) {
+            CounterPresenter(eventsFlow, apiService)
+        }
     }
+    println("CounterScreen")
     CounterLayout(models) {
         eventsFlow.tryEmit(it)
     }
@@ -42,7 +49,9 @@ fun CounterScreen() {
 
 @Composable
 fun CounterLayout(models: StateFlow<CounterModel>, onEventClick: (CounterEvent) -> Unit) {
-    val model = models.collectAsState()
+    println("CounterLayout")
+    val model by models.collectAsState()
+    println(model)
     Column(
         modifier = Modifier
             .fillMaxWidth()

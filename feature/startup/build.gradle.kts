@@ -38,6 +38,7 @@ kotlin {
 
     sourceSets {
         val commonMain by getting {
+            kotlin.srcDir("build/generated/ksp/metadata/commonMain")
             dependencies {
                 api(compose.runtime)
                 api(compose.foundation)
@@ -88,6 +89,7 @@ kotlin {
             }
         }
         val desktopMain by getting {
+            kotlin.srcDir("build/generated/ksp/desktop/desktopMain")
             dependsOn(jvmCommonMain)
             dependencies {
                 api(compose.desktop.common)
@@ -110,6 +112,7 @@ android {
 
 dependencies {
     add("kspCommonMainMetadata", sharedCommonLibs.koin.ksp.compiler.get().toString())
+    add("kspDesktop", sharedCommonLibs.koin.ksp.compiler.get().toString())
 }
 
 ksp {

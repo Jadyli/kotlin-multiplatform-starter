@@ -4,7 +4,7 @@
 
 package com.jady.feature.startup.config
 
-import com.jady.lib.framework.willow.BaseIosWillowConfig
+import com.jady.lib.framework.http.BaseIosHttpConfig
 import io.ktor.client.*
 import io.ktor.client.engine.darwin.*
 import org.koin.core.annotation.Factory
@@ -15,7 +15,7 @@ import org.koin.core.annotation.Factory
  * email: 1257984872@qq.com
  */
 @Factory
-class WillowConfig : BaseIosWillowConfig() {
+class WillowConfig : BaseIosHttpConfig() {
     override fun HttpClientConfig<DarwinClientEngineConfig>.config() {
     }
 }

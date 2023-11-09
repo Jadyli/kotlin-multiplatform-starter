@@ -31,6 +31,7 @@ fun CounterPresenter(
 ): CounterModel {
     var count by remember { mutableStateOf(0) }
     var loading by remember { mutableStateOf(false) }
+    println("CounterPresenter")
 
     LaunchedEffect(Unit) {
         events.collect { event ->
@@ -41,16 +42,14 @@ fun CounterPresenter(
                 Randomize -> {
                     loading = true
                     launch {
-                        // We want to observe these two state changes atomically.
-                        Snapshot.withMutableSnapshot {
-                            count = apiService.getRandomInteger(-20, 20)
-                            loading = false
-                        }
+                        count = apiService.getRandomInteger(-20, 20)
+                        loading = false
                     }
                 }
             }
         }
     }
 
+    println("count: $count")
     return CounterModel(count, loading)
 }

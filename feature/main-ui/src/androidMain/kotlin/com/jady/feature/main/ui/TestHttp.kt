@@ -1,4 +1,4 @@
-package com.jady.feature.startup.ui
+package com.jady.feature.main.ui
 
 /**
  * @author jady
