@@ -43,7 +43,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "KMP-Demo"
+rootProject.name = "kotlin-multiplatform-starter"
 
 include(":app")
 

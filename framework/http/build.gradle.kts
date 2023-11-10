@@ -1,5 +1,7 @@
 @file:Suppress("UnstableApiUsage", "OPT_IN_IS_NOT_ENABLED", "OPT_IN_USAGE")
 
+import org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType
+
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(androidCommonLibs.plugins.android.library)
@@ -41,6 +43,8 @@ kotlin {
             baseName = "http"
             isStatic = true
         }
+        xcodeConfigurationToNativeBuildType["CUSTOM_DEBUG"] = NativeBuildType.DEBUG
+        xcodeConfigurationToNativeBuildType["CUSTOM_RELEASE"] = NativeBuildType.RELEASE
     }
 
     // applyDefaultHierarchyTemplate()

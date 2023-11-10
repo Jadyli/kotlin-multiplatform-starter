@@ -34,7 +34,7 @@ val androidLibs = androidCommonLibs
 val businessLibs = bizLibs
 val sharedLibs = sharedCommonLibs
 subprojects {
-    setGroup("com.jady.lib.framework")
+    group = "com.jady.lib.framework"
     apply(plugin = androidLibs.plugins.config.plugin.get().pluginId)
     apply(plugin = sharedLibs.plugins.maven.publish.get().pluginId)
 
@@ -66,11 +66,11 @@ subprojects {
         pom {
             name.set(project.name)
             description.set("Framework module.")
-            url.set("https://git.xxx/KMP-Demo")
+            url.set("https://github.com/Jadyli/kotlin-multiplatform-starter")
             scm {
-                connection.set("scm:git:https://git.xxx/KMP-Demo.git")
-                developerConnection.set("scm:git:ssh://git@git.xxx/KMP-Demo.git")
-                url.set("https://git.xxx/KMP-Demo")
+                connection.set("scm:git:https://github.com/Jadyli/kotlin-multiplatform-starter.git")
+                developerConnection.set("scm:git:ssh://git@github.com:Jadyli/kotlin-multiplatform-starter.git")
+                url.set("https://github.com/Jadyli/kotlin-multiplatform-starter")
             }
             developers {
                 developer {

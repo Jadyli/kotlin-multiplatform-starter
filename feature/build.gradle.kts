@@ -34,7 +34,7 @@ val androidLibs = androidCommonLibs
 val businessLibs = bizLibs
 val sharedLibs = sharedCommonLibs
 subprojects {
-    setGroup("com.jady.feature")
+    group = "com.jady.feature"
     apply(plugin = androidLibs.plugins.config.plugin.get().pluginId)
     apply(plugin = sharedLibs.plugins.maven.publish.get().pluginId)
 
