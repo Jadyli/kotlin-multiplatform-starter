@@ -1,6 +1,6 @@
 [versions]
 # https://kotlinlang.org/docs/gradle-configure-project.html#apply-the-plugin
-kotlin = "1.9.10"
+kotlin = "1.9.20"
 # https://plugins.gradle.org/plugin/org.gradle.kotlin.kotlin-dsl
 # https://github.com/gradle/gradle/blob/master/build-logic/kotlin-dsl/build.gradle.kts
 kotlin-dsl = "4.2.0"
@@ -10,7 +10,7 @@ kotlin-serialization = "1.6.0"
 kotlin-coroutines = "1.7.3"
 # 主版本：https://github.com/ktorio/ktor
 # wasm 版本：https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental/io/ktor/ktor-client/
-ktor = "2.3.5"
+ktor = "2.3.6"
 # compose
 # https://maven.google.com/web/index.html?q=bom#androidx.compose:compose-bom
 compose-bom = "2023.10.01"
@@ -18,13 +18,13 @@ compose-bom = "2023.10.01"
 compose-common = "1.5.4"
 compose-material3 = "1.1.2"
 # https://search.maven.org/artifact/org.jetbrains.compose.compiler/compiler
-compose-plugin-compiler = "1.5.2"
+compose-plugin-compiler = "1.5.3"
 # https://maven.google.com/web/index.html?q=compiler#androidx.compose.compiler:compiler
 compose-androidx-compiler = "1.5.3"
 # https://github.com/JetBrains/compose-multiplatform/releases
 # https://central.sonatype.com/artifact/org.jetbrains.compose/org.jetbrains.compose.gradle.plugin/versions
-compose-plugin = "1.5.3"
 # wasm 版：https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental/org/jetbrains/compose/compose-gradle-plugin/
+compose-plugin = "1.5.10"
 #compose-plugin = "1.5.1-dev-wasm01"
 compose-paging = "3.2.1"
 
@@ -34,7 +34,7 @@ compose-constraintlayout = "1.0.1"
 # androidx-annotation
 androidx-annotation = "1.7.0"
 # ksp 版本列表 https://github.com/google/ksp/releases?page=1
-ksp = "1.9.10-1.0.13"
+ksp = "1.9.20-1.0.14"
 # plugins
 # https://central.sonatype.com/artifact/com.vanniktech.maven.publish/com.vanniktech.maven.publish.gradle.plugin
 maven-publish = "0.25.3"

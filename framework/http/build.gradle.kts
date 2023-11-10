@@ -20,9 +20,16 @@ kotlin {
     //     nodejs()
     // }
 
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "http"
+            isStatic = true
+        }
+    }
 
     cocoapods {
         version = "1.0.0"
@@ -32,6 +39,7 @@ kotlin {
         podfile = file(rootDir.parentFile.path + "/iosApp/Podfile")
         framework {
             baseName = "http"
+            isStatic = true
         }
     }
 
