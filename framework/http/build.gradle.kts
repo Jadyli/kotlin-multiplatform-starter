@@ -51,7 +51,7 @@ kotlin {
 
     sourceSets {
         val commonMain by getting {
-            kotlin.srcDir("build/generated/ksp/metadata/commonMain")
+            // kotlin.srcDir("build/generated/ksp/metadata/commonMain")
             dependencies {
                 api(compose.runtime)
                 api(compose.foundation)
@@ -79,10 +79,13 @@ kotlin {
             }
         }
         val androidMain by getting {
+            kotlin.srcDir("build/generated/ksp/android/androidDebug")
+            kotlin.srcDir("build/generated/ksp/android/androidRelease")
             dependsOn(jvmCommonMain)
             dependencies {
                 api(androidCommonLibs.androidx.core.ktx)
                 api(compose.uiTooling)
+                api(sharedCommonLibs.koin.android)
             }
         }
         val androidUnitTest by getting {
@@ -106,6 +109,7 @@ kotlin {
             }
         }
         val desktopMain by getting {
+            kotlin.srcDir("build/generated/ksp/desktop/desktopMain")
             dependsOn(jvmCommonMain)
             dependencies {
                 api(compose.desktop.common)
@@ -127,7 +131,14 @@ android {
 }
 
 dependencies {
-    add("kspCommonMainMetadata", sharedCommonLibs.koin.ksp.compiler.get().toString())
+    with(sharedCommonLibs.koin.ksp.compiler.get().toString()) {
+        // add("kspCommonMainMetadata", this)
+        add("kspDesktop", this)
+        add("kspAndroid", this)
+        add("kspIosX64", this)
+        add("kspIosArm64", this)
+        add("kspIosSimulatorArm64", this)
+    }
 }
 
 ksp {

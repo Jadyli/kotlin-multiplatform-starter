@@ -38,7 +38,7 @@ kotlin {
 
     sourceSets {
         val commonMain by getting {
-            kotlin.srcDir("build/generated/ksp/metadata/commonMain")
+            // kotlin.srcDir("build/generated/ksp/metadata/commonMain")
             dependencies {
                 api(compose.runtime)
                 api(compose.foundation)
@@ -61,6 +61,8 @@ kotlin {
             }
         }
         val androidMain by getting {
+            kotlin.srcDir("build/generated/ksp/android/androidDebug")
+            kotlin.srcDir("build/generated/ksp/android/androidRelease")
             dependsOn(jvmCommonMain)
             dependencies {
                 api(androidCommonLibs.androidx.annotation)
@@ -107,12 +109,18 @@ kotlin {
 }
 
 android {
-    namespace = "com.missevan.feature.startup"
+    namespace = "com.jady.feature.startup"
 }
 
 dependencies {
-    add("kspCommonMainMetadata", sharedCommonLibs.koin.ksp.compiler.get().toString())
-    add("kspDesktop", sharedCommonLibs.koin.ksp.compiler.get().toString())
+    with(sharedCommonLibs.koin.ksp.compiler.get().toString()) {
+        // add("kspCommonMainMetadata", this)
+        add("kspDesktop", this)
+        add("kspAndroid", this)
+        add("kspIosX64", this)
+        add("kspIosArm64", this)
+        add("kspIosSimulatorArm64", this)
+    }
 }
 
 ksp {

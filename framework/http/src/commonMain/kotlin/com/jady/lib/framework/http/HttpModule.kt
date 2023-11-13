@@ -27,35 +27,35 @@ import org.koin.core.annotation.Module
  */
 @Module
 @ComponentScan
-class HttpModule {
-    @Factory
-    fun createHttpClient(): HttpClient = createClient { willowConfig ->
-        defaultRequest {
-            header(HttpHeaders.ContentType, ContentType.Application.Json)
-        }
-        install(HttpTimeout) {
-            requestTimeoutMillis = willowConfig.readTimeOut
-            connectTimeoutMillis = willowConfig.connectTimeOut
-        }
-        ContentEncoding()
-        install(Resources)
-        install(Logging) {
-            logger = object : Logger {
-                override fun log(message: String) {
-                    println(message)
-                }
+class HttpModule
+
+@Factory
+internal fun createHttpClient(): HttpClient = createClient { willowConfig ->
+    defaultRequest {
+        header(HttpHeaders.ContentType, ContentType.Application.Json)
+    }
+    install(HttpTimeout) {
+        requestTimeoutMillis = willowConfig.readTimeOut
+        connectTimeoutMillis = willowConfig.connectTimeOut
+    }
+    ContentEncoding()
+    install(Resources)
+    install(Logging) {
+        logger = object : Logger {
+            override fun log(message: String) {
+                println(message)
             }
-            level = LogLevel.HEADERS
         }
-        install(ContentNegotiation) {
-            json(
-                Json {
-                    prettyPrint = true
-                    isLenient = true
-                }
-            )
-        }
+        level = LogLevel.HEADERS
+    }
+    install(ContentNegotiation) {
+        json(
+            Json {
+                prettyPrint = true
+                isLenient = true
+            }
+        )
     }
 }
 
-expect fun createClient(commonConfig: HttpClientConfig<out HttpClientEngineConfig>.(BaseHttpConfig<*>) -> Unit): HttpClient
+internal expect fun createClient(commonConfig: HttpClientConfig<out HttpClientEngineConfig>.(BaseHttpConfig<*>) -> Unit): HttpClient

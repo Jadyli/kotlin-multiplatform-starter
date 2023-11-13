@@ -1,4 +1,4 @@
-package com.jady.kmp.demo.ui.theme
+package com.jady.kotlin.multiplatform.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

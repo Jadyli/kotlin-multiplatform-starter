@@ -1,4 +1,4 @@
-package com.jady.kmp.demo.ui.theme
+package com.jady.kotlin.multiplatform.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -38,7 +38,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun KMPDemoTheme(
+fun MultiPlatformTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,

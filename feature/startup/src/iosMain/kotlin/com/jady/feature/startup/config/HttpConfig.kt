@@ -14,8 +14,8 @@ import org.koin.core.annotation.Factory
  * @since 2023/10/18 16/01
  * email: 1257984872@qq.com
  */
-@Factory
-class WillowConfig : BaseIosHttpConfig() {
+@Factory(binds = [BaseIosHttpConfig::class])
+class HttpConfig : BaseIosHttpConfig() {
     override fun HttpClientConfig<DarwinClientEngineConfig>.config() {
     }
 }

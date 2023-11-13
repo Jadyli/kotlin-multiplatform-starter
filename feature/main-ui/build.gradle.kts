@@ -106,11 +106,18 @@ kotlin {
 }
 
 android {
-    namespace = "com.missevan.feature.main.ui"
+    namespace = "com.jady.feature.main.ui"
 }
 
 dependencies {
-    add("kspCommonMainMetadata", sharedCommonLibs.koin.ksp.compiler.get().toString())
+    with(sharedCommonLibs.koin.ksp.compiler.get().toString()) {
+        add("kspCommonMainMetadata", this)
+        add("kspDesktop", this)
+        add("kspAndroid", this)
+        add("kspIosX64", this)
+        add("kspIosArm64", this)
+        add("kspIosSimulatorArm64", this)
+    }
 }
 
 ksp {

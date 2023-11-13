@@ -1,4 +1,4 @@
-package com.jady.kmp.demo.ui.theme
+package com.jady.kotlin.multiplatform.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.jady.kmp.demo"
+    namespace = "com.jady.kotlin.multiplatform"
 
     defaultConfig {
         applicationId = "com.jady.kmp.demo"
@@ -22,6 +22,8 @@ dependencies {
     implementation(compose.ui)
     implementation(compose.uiTooling)
     implementation(compose.material3)
+    implementation(bizLibs.feature.startup)
+    implementation(bizLibs.feature.main.ui)
     testImplementation(androidCommonLibs.junit)
     androidTestImplementation(androidCommonLibs.androidx.test.junit)
     androidTestImplementation(androidCommonLibs.espresso.core)

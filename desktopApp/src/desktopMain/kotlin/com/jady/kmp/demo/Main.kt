@@ -6,10 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import com.jady.feature.main.ui.CounterScreen
-import com.jady.feature.startup.StartupModule
-import com.jady.lib.framework.http.HttpModule
-import org.koin.core.context.startKoin
-import org.koin.ksp.generated.*
+import com.jady.feature.startup.StartUp
 
 @Composable
 @Preview
@@ -20,12 +17,7 @@ fun App() {
 }
 
 fun main() = application {
-    startKoin {
-        modules(
-            HttpModule().module,
-            StartupModule().module
-        )
-    }
+    StartUp().initLibs()
     Window(onCloseRequest = ::exitApplication) {
         App()
     }
