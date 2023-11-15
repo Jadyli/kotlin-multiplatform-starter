@@ -18,10 +18,7 @@ actual class StartUp : CoroutineScope by CoroutineScope(SupervisorJob() + Dispat
 
     private fun initKoin() {
         startKoin {
-            modules(
-                HttpModule().module,
-                StartupModule().module
-            )
+            addCommonModules()
         }
     }
 }
