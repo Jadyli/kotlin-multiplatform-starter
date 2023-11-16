@@ -1,2 +1,2 @@
 # kotlin-multiplatform-starter
-Creation Template for More Complex Kotlin MultiPlatform Projects.
+Creation template for more complex Kotlin MultiPlatform projects.
