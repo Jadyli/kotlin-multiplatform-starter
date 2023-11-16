@@ -2,7 +2,7 @@ package com.jady.kotlin.multiplatform
 
 import android.app.Application
 import com.jady.feature.startup.StartUp
-import com.jady.feature.startup.addCommonModules
+import com.jady.feature.startup.getCommonModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -20,7 +20,7 @@ class MainApplication : Application() {
         startKoin {
             androidLogger(Level.DEBUG)
             androidContext(applicationContext)
-            addCommonModules()
+            modules(getCommonModules())
         }
     }
 }

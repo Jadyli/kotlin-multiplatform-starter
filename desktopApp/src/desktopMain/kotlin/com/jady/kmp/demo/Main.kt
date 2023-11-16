@@ -7,7 +7,7 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import com.jady.feature.main.ui.CounterScreen
 import com.jady.feature.startup.StartUp
-import com.jady.feature.startup.addCommonModules
+import com.jady.feature.startup.getCommonModules
 import org.koin.core.context.startKoin
 
 @Composable
@@ -21,7 +21,7 @@ fun App() {
 fun main() = application {
     StartUp().initLibs()
     startKoin {
-        addCommonModules()
+        modules(getCommonModules())
     }
     Window(onCloseRequest = ::exitApplication) {
         App()

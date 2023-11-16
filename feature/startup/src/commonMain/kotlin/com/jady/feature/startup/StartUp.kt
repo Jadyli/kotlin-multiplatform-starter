@@ -2,7 +2,6 @@ package com.jady.feature.startup
 
 import com.jady.lib.framework.http.HttpModule
 import kotlinx.coroutines.CoroutineScope
-import org.koin.core.KoinApplication
 import org.koin.core.annotation.ComponentScan
 import org.koin.core.annotation.Module
 import org.koin.ksp.generated.module
@@ -20,9 +19,4 @@ expect class StartUp : CoroutineScope {
 @ComponentScan
 class StartupModule
 
-fun KoinApplication.addCommonModules() {
-    modules(
-        HttpModule().module,
-        StartupModule().module
-    )
-}
+fun getCommonModules(): List<org.koin.core.module.Module> = listOf(HttpModule().module, StartupModule().module)
