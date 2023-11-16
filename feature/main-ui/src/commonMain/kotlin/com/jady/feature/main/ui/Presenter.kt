@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.Snapshot
+import io.ktor.client.call.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
@@ -42,7 +43,7 @@ fun CounterPresenter(
                 Randomize -> {
                     loading = true
                     launch {
-                        count = apiService.getRandomInteger(-20, 20)
+                        count = apiService.get(RandomNumber.RandomInteger(min = -20, max = 20)).body<String>().trim().toInt()
                         loading = false
                     }
                 }

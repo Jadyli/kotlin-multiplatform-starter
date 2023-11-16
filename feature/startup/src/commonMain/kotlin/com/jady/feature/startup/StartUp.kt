@@ -20,7 +20,7 @@ expect class StartUp : CoroutineScope {
 @ComponentScan
 class StartupModule
 
-internal fun KoinApplication.addCommonModules() {
+fun KoinApplication.addCommonModules() {
     modules(
         HttpModule().module,
         StartupModule().module

@@ -13,12 +13,5 @@ import org.koin.core.context.startKoin
  */
 actual class StartUp : CoroutineScope by CoroutineScope(SupervisorJob() + Dispatchers.Default) {
     actual fun initLibs() {
-        initKoin()
-    }
-
-    private fun initKoin() {
-        startKoin {
-            addCommonModules()
-        }
     }
 }

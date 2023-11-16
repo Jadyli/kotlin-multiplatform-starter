@@ -2,6 +2,11 @@ package com.jady.kotlin.multiplatform
 
 import android.app.Application
 import com.jady.feature.startup.StartUp
+import com.jady.feature.startup.addCommonModules
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
+import org.koin.core.logger.Level
 
 /**
  * @author jady
@@ -12,5 +17,10 @@ class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         StartUp(applicationContext).initLibs()
+        startKoin {
+            androidLogger(Level.DEBUG)
+            androidContext(applicationContext)
+            addCommonModules()
+        }
     }
 }

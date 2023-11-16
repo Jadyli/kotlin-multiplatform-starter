@@ -20,8 +20,7 @@ import io.ktor.client.request.put as putBuilder
  * @since 2023/11/4 17:58
  * email: 1257984872@qq.com
  */
-val httpClient = KoinPlatform.getKoin().get<HttpClient>()
-val apiService = ApiService()
+val apiService by lazy { ApiService() }
 
 @Serializable
 class RandomNumber {
@@ -37,79 +36,4 @@ class RandomNumber {
     )
 }
 
-abstract class IApiService(baseUrl: String) {
-    protected val urlBuilder = Url(baseUrl)
-
-    /**
-     * Executes a [HttpClient] GET request, with a URL built from [resource] and the information from the [builder]
-     */
-    protected suspend inline fun <reified T : Any> HttpClient.get(
-        resource: T,
-        builder: HttpRequestBuilder.() -> Unit = {}
-    ): HttpResponse {
-        return getBuilder {
-            build<T>(resources(), resource, builder)
-        }
-    }
-
-    /**
-     * Executes a [HttpClient] POST request, with a URL built from [resource] and the information from the [builder]
-     */
-    protected suspend inline fun <reified T : Any> HttpClient.post(
-        resource: T,
-        builder: HttpRequestBuilder.() -> Unit = {}
-    ): HttpResponse {
-        return postBuilder {
-            build<T>(resources(), resource, builder)
-        }
-    }
-
-    /**
-     * Executes a [HttpClient] PUT request, with a URL built from [resource] and the information from the [builder]
-     */
-    protected suspend inline fun <reified T : Any> HttpClient.put(
-        resource: T,
-        builder: HttpRequestBuilder.() -> Unit = {}
-    ): HttpResponse {
-        return putBuilder {
-            build<T>(resources(), resource, builder)
-        }
-    }
-
-    /**
-     * Executes a [HttpClient] DELETE request, with a URL built from [resource] and the information from the [builder]
-     */
-    protected suspend inline fun <reified T : Any> HttpClient.delete(
-        resource: T,
-        builder: HttpRequestBuilder.() -> Unit = {}
-    ): HttpResponse {
-        return deleteBuilder {
-            build<T>(resources(), resource, builder)
-        }
-    }
-
-    protected inline fun <reified T : Any> HttpRequestBuilder.build(
-        resources: io.ktor.resources.Resources,
-        resource: T,
-        builder: HttpRequestBuilder.() -> Unit
-    ) {
-        url {
-            protocol = urlBuilder.protocol
-            host = urlBuilder.host
-            port = urlBuilder.port
-            encodedPath = urlBuilder.encodedPath
-        }
-        href(resources.resourcesFormat, resource, url)
-        builder()
-    }
-
-    @PublishedApi
-    internal fun HttpClient.resources(): io.ktor.resources.Resources {
-        return pluginOrNull(Resources) ?: throw IllegalStateException("Resources plugin is not installed")
-    }
-}
-
-class ApiService : IApiService("https://www.random.org/") {
-    suspend fun getRandomInteger(min: Int, max: Int): Int =
-        httpClient.get(RandomNumber.RandomInteger(min = min, max = max)).body<String>().trim().toInt()
-}
+class ApiService : BaseApiService("https://www.random.org/")

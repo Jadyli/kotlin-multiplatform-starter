@@ -17,14 +17,5 @@ import org.koin.core.logger.Level
 @Keep
 actual class StartUp(private val mContext: Context) : CoroutineScope by MainScope() {
     actual fun initLibs() {
-        initKoin()
-    }
-
-    private fun initKoin() {
-        startKoin {
-            androidLogger(Level.DEBUG)
-            androidContext(mContext)
-            addCommonModules()
-        }
     }
 }
