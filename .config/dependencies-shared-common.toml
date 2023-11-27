@@ -1,11 +1,11 @@
 [versions]
 # https://kotlinlang.org/docs/gradle-configure-project.html#apply-the-plugin
-kotlin = "1.9.20"
+kotlin = "1.9.21"
 # https://plugins.gradle.org/plugin/org.gradle.kotlin.kotlin-dsl
 # https://github.com/gradle/gradle/blob/master/build-logic/kotlin-dsl/build.gradle.kts
 kotlin-dsl = "4.2.0"
 # https://github.com/Kotlin/kotlinx.serialization
-kotlin-serialization = "1.6.0"
+kotlin-serialization = "1.6.1"
 # https://github.com/Kotlin/kotlinx.coroutines
 kotlin-coroutines = "1.7.3"
 # 主版本：https://github.com/ktorio/ktor
@@ -18,17 +18,17 @@ compose-bom = "2023.10.01"
 compose-common = "1.5.4"
 compose-material3 = "1.1.2"
 # https://search.maven.org/artifact/org.jetbrains.compose.compiler/compiler
-compose-plugin-compiler = "1.5.3"
+compose-plugin-compiler = "1.5.4"
 # https://maven.google.com/web/index.html?q=compiler#androidx.compose.compiler:compiler
-compose-androidx-compiler = "1.5.3"
+compose-androidx-compiler = "1.5.4"
 # https://github.com/JetBrains/compose-multiplatform/releases
 # https://central.sonatype.com/artifact/org.jetbrains.compose/org.jetbrains.compose.gradle.plugin/versions
 # wasm 版：https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental/org/jetbrains/compose/compose-gradle-plugin/
-compose-plugin = "1.5.10"
+compose-plugin = "1.5.11"
 #compose-plugin = "1.5.1-dev-wasm01"
 compose-paging = "3.2.1"
 
-compose-navigation = "2.7.4"
+compose-navigation = "2.7.5"
 accompanist = "0.30.1"
 compose-constraintlayout = "1.0.1"
 # androidx-annotation
