@@ -34,7 +34,7 @@ compose-constraintlayout = "1.0.1"
 # androidx-annotation
 androidx-annotation = "1.7.0"
 # ksp 版本列表 https://github.com/google/ksp/releases?page=1
-ksp = "1.9.20-1.0.14"
+ksp = "1.9.21-1.0.15"
 # plugins
 # https://central.sonatype.com/artifact/com.vanniktech.maven.publish/com.vanniktech.maven.publish.gradle.plugin
 maven-publish = "0.25.3"
