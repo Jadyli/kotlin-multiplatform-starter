@@ -27,6 +27,7 @@ kotlin {
     iosSimulatorArm64()
 
     cocoapods {
+        name = "http"
         version = "1.0.0"
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
@@ -34,7 +35,6 @@ kotlin {
         podfile = file(rootDir.parentFile.path + "/iosApp/Podfile")
         framework {
             baseName = "http"
-            isStatic = true
         }
         xcodeConfigurationToNativeBuildType["CUSTOM_DEBUG"] = NativeBuildType.DEBUG
         xcodeConfigurationToNativeBuildType["CUSTOM_RELEASE"] = NativeBuildType.RELEASE

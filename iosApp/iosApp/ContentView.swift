@@ -1,10 +1,10 @@
 import SwiftUI
+//import main_ui
 
 struct ContentView: View {
-	let greet = "KMP-Demo"
-
 	var body: some View {
-		Text(greet)
+//		CounterScreen()
+		Text("KMP-Demo")
 	}
 }
 

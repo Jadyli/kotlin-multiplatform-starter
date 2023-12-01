@@ -15,3 +15,10 @@ actual class StartUp : CoroutineScope by CoroutineScope(SupervisorJob() + Dispat
     actual fun initLibs() {
     }
 }
+
+fun initIosApp() {
+    StartUp().initLibs()
+    startKoin {
+        modules(getCommonModules())
+    }
+}

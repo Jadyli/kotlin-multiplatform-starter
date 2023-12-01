@@ -5,7 +5,7 @@ kotlin = "1.9.21"
 # https://github.com/gradle/gradle/blob/master/build-logic/kotlin-dsl/build.gradle.kts
 kotlin-dsl = "4.2.0"
 # https://github.com/Kotlin/kotlinx.serialization
-kotlin-serialization = "1.6.1"
+kotlin-serialization = "1.6.2"
 # https://github.com/Kotlin/kotlinx.coroutines
 kotlin-coroutines = "1.7.3"
 # 主版本：https://github.com/ktorio/ktor
@@ -41,7 +41,7 @@ maven-publish = "0.25.3"
 # https://plugins.gradle.org/plugin/com.gradle.plugin-publish
 gradle-publish = "1.2.1"
 # https://github.com/cashapp/molecule/releases
-molecule = "1.3.0"
+molecule = "1.3.1"
 # koin https://insert-koin.io/docs/setup/koin
 koin = "3.5.0"
 koin-compose = "1.1.0"
@@ -56,9 +56,9 @@ kermit = "2.0.2"
 # https://cashapp.github.io/sqldelight/2.0.0/
 sqldelight = "2.0.0"
 # https://github.com/russhwolf/multiplatform-settings
-multiplatform-settings = "1.1.0"
+multiplatform-settings = "1.1.1"
 # https://github.com/ctripcorp/mmkv-kotlin
-mmkv = "1.2.8"
+mmkv = "1.2.10"
 
 [libraries]
 # plugin source

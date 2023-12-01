@@ -2,4 +2,6 @@ target 'iosApp' do
   use_frameworks!
   platform :ios, '14.1'
   pod 'http', :path => '../framework/http'
+  pod 'startup', :path => '../feature/startup'
+#   pod 'main-ui', :path => '../feature/main-ui'
 end
