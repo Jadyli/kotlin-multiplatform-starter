@@ -15,7 +15,9 @@ import io.ktor.client.plugins.resources.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonNamingStrategy
 import org.koin.core.annotation.ComponentScan
 import org.koin.core.annotation.Factory
 import org.koin.core.annotation.Module
@@ -29,6 +31,7 @@ import org.koin.core.annotation.Module
 @ComponentScan
 class HttpModule
 
+@OptIn(ExperimentalSerializationApi::class)
 @Factory
 internal fun createHttpClient(): HttpClient = createClient { willowConfig ->
     defaultRequest {
@@ -51,8 +54,12 @@ internal fun createHttpClient(): HttpClient = createClient { willowConfig ->
     install(ContentNegotiation) {
         json(
             Json {
-                prettyPrint = true
                 isLenient = true
+                namingStrategy = JsonNamingStrategy.SnakeCase
+                encodeDefaults = false
+                coerceInputValues = true
+                ignoreUnknownKeys = true
+                useAlternativeNames = true
             }
         )
     }
