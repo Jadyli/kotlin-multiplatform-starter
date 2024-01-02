@@ -3,8 +3,8 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(androidCommonLibs.plugins.android.library)
-    alias(sharedCommonLibs.plugins.compose)
     alias(sharedCommonLibs.plugins.kotlin.multiplatform)
+    alias(sharedCommonLibs.plugins.compose)
     alias(sharedCommonLibs.plugins.kotlin.native.cocoapods)
     alias(sharedCommonLibs.plugins.ksp)
     alias(sharedCommonLibs.plugins.kotlin.serialization)
