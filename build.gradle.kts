@@ -1,4 +1,5 @@
-import com.jady.lib.config.ConfigExtension
+import com.jady.lib.config.CommonConfigExtension
+import com.jady.lib.config.applyLibResPlugin
 
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
@@ -32,18 +33,23 @@ val sharedLibs = sharedCommonLibs
 subprojects {
     apply(plugin = androidLibs.plugins.config.plugin.get().pluginId)
 
-    configure<ConfigExtension> {
+    configure<CommonConfigExtension> {
         version {
             minSdk = androidLibs.versions.minSdk.get().toInt()
             targetSdk = androidLibs.versions.targetSdk.get().toInt()
             compileSdk = androidLibs.versions.compileSdk.get().toInt()
             java = androidLibs.versions.java.asProvider().get().toInt()
             kotlin = sharedLibs.versions.kotlin.asProvider().get()
-            composePluginCompiler = sharedLibs.versions.compose.plugin.compiler.get()
             composeAndroidxCompiler = sharedLibs.versions.compose.androidx.compiler.get()
         }
         vectorDrawableSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+    project.applyLibResPlugin {
+        generatedClassName = "LibRes"
+        generateNamedArguments = true
+        baseLocaleLanguageCode = "zh"
+        camelCaseNamesForAppleFramework = false
     }
 }
 

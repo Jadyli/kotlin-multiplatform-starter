@@ -1,4 +1,9 @@
-@file:Suppress("UnstableApiUsage", "OPT_IN_IS_NOT_ENABLED", "OPT_IN_USAGE")
+@file:Suppress("UnstableApiUsage")
+
+import com.jady.lib.config.KspCompiler
+import com.jady.lib.config.addKspDependencies
+import com.jady.lib.config.configKMPPlugin
+import com.jady.lib.config.configKspExtension
 
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
@@ -10,29 +15,12 @@ plugins {
 }
 
 kotlin {
-    androidTarget()
-    jvm("desktop")
-    // wasmJs {
-    //     browser()
-    // }
-    // wasmWasi() {
-    //     nodejs()
-    // }
-
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
-
-    cocoapods {
-        version = "1.0.0"
-        summary = "Some description for the Shared Module"
-        homepage = "Link to the Shared Module homepage"
-        ios.deploymentTarget = "14.1"
-        podfile = file(rootDir.parentFile.path + "/iosApp/Podfile")
-        framework {
-            baseName = "startup"
-        }
-    }
+    configKMPPlugin(
+        project,
+        androidCommonLibs.versions.java.asProvider().get().toInt(),
+        sharedCommonLibs.versions.compose.plugin.compiler.get(),
+        true
+    )
 
     // applyDefaultHierarchyTemplate()
 
@@ -40,30 +28,17 @@ kotlin {
         val commonMain by getting {
             // kotlin.srcDir("build/generated/ksp/metadata/commonMain")
             dependencies {
-                api(compose.runtime)
-                api(compose.foundation)
-                api(compose.material3)
-                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
-                api(compose.components.resources)
-                api(sharedCommonLibs.ktor.client.core)
-                api(sharedCommonLibs.ktor.client.auth)
                 api(bizLibs.framework.http)
-                api(sharedCommonLibs.ktor.client.content.negotiation)
-                api(sharedCommonLibs.ktor.serialization.kotlinx.json)
                 api(sharedCommonLibs.koin.core)
                 api(sharedCommonLibs.koin.annotations)
             }
         }
-        val jvmCommonMain by creating {
-            dependsOn(commonMain)
+        val jvmCommonMain by getting {
             dependencies {
                 api(sharedCommonLibs.ktor.client.okhttp.get().toString())
             }
         }
         val androidMain by getting {
-            kotlin.srcDir("build/generated/ksp/android/androidDebug")
-            kotlin.srcDir("build/generated/ksp/android/androidRelease")
-            dependsOn(jvmCommonMain)
             dependencies {
                 api(androidCommonLibs.androidx.annotation)
                 api(androidCommonLibs.androidx.core.ktx)
@@ -78,33 +53,11 @@ kotlin {
                 implementation(androidCommonLibs.junit)
             }
         }
-        val iosX64Main by getting
-        val iosArm64Main by getting
-        val iosSimulatorArm64Main by getting
-        val iosMain by creating {
-            dependsOn(commonMain)
-            iosX64Main.dependsOn(this)
-            iosArm64Main.dependsOn(this)
-            iosSimulatorArm64Main.dependsOn(this)
+        val iosMain by getting {
             dependencies {
                 api(sharedCommonLibs.ktor.client.darwin)
             }
         }
-        val desktopMain by getting {
-            kotlin.srcDir("build/generated/ksp/desktop/desktopMain")
-            dependsOn(jvmCommonMain)
-            dependencies {
-                api(compose.desktop.common)
-            }
-        }
-        // val jsWasmMain by creating {
-        //     dependsOn(commonMain.get())
-        // }
-        // jsMain {
-        //     dependsOn(jsWasmMain)
-        // }
-        // val wasmJsMain by getting {
-        // }
     }
 }
 
@@ -113,16 +66,9 @@ android {
 }
 
 dependencies {
-    with(sharedCommonLibs.koin.ksp.compiler.get().toString()) {
-        // add("kspCommonMainMetadata", this)
-        add("kspDesktop", this)
-        add("kspAndroid", this)
-        add("kspIosX64", this)
-        add("kspIosArm64", this)
-        add("kspIosSimulatorArm64", this)
-    }
+    addKspDependencies(listOf(KspCompiler(true, sharedCommonLibs.koin.ksp.compiler)))
 }
 
 ksp {
-    arg("KOIN_CONFIG_CHECK", "true")
+    configKspExtension()
 }

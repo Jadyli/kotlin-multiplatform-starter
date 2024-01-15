@@ -5,12 +5,12 @@ targetSdk = "30"
 compileSdk = "34"
 java-major = "11"
 java = "11"
-config-plugin = "0.1.17"
+config-plugin = "0.1.22"
 # billing
 google-billing = "4.1.0"
 # plugin
 # https://maven.google.com/web/index.html?q=build#com.android.tools.build:gradle
-android-plugin = "7.2.2"
+android-plugin = "7.4.2"
 android-tools-common = "30.0.2"
 spotless = "6.11.0"
 # androidx

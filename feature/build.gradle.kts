@@ -1,7 +1,10 @@
 @file:Suppress("UnstableApiUsage")
 
-import com.jady.lib.config.ConfigExtension
-import com.vanniktech.maven.publish.MavenPublishBaseExtension
+import com.jady.lib.config.CommonConfigExtension
+import com.jady.lib.config.MavenRepository
+import com.jady.lib.config.PomExtension
+import com.jady.lib.config.applyLibResPlugin
+import com.jady.lib.config.applyMavenPlugin
 
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
@@ -35,49 +38,40 @@ val businessLibs = bizLibs
 val sharedLibs = sharedCommonLibs
 subprojects {
     group = "com.jady.feature"
+    version = requireNotNull(businessLibs.feature.create("feature.$name").get().version)
     apply(plugin = androidLibs.plugins.config.plugin.get().pluginId)
     apply(plugin = sharedLibs.plugins.maven.publish.get().pluginId)
 
-    configure<ConfigExtension> {
+    configure<CommonConfigExtension> {
         version {
             minSdk = androidLibs.versions.minSdk.get().toInt()
             targetSdk = androidLibs.versions.targetSdk.get().toInt()
             compileSdk = androidLibs.versions.compileSdk.get().toInt()
             java = androidLibs.versions.java.asProvider().get().toInt()
             kotlin = sharedLibs.versions.kotlin.asProvider().get()
-            composePluginCompiler = sharedLibs.versions.compose.plugin.compiler.get()
             composeAndroidxCompiler = sharedLibs.versions.compose.androidx.compiler.get()
         }
         vectorDrawableSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-    configure<PublishingExtension> {
-        repositories {
-            maven {
-                name = "XXX"
-                url = uri("https://xxx")
-            }
-        }
+    project.applyLibResPlugin {
+        generatedClassName = "LibRes"
+        generateNamedArguments = true
+        baseLocaleLanguageCode = "zh"
+        camelCaseNamesForAppleFramework = false
     }
-    configure<MavenPublishBaseExtension> {
-        val moduleVersion = requireNotNull(businessLibs.feature.create("feature.$name").get().version)
-        version = moduleVersion
-        println("group: $group, name: $name, version: $moduleVersion")
-        pom {
-            name.set(project.name)
-            description.set("Feature module.")
-            url.set("https://git.xxx/KMP-Demo")
-            scm {
-                connection.set("scm:git:https://git.xxx/KMP-Demo.git")
-                developerConnection.set("scm:git:ssh://git@git.xxx/KMP-Demo.git")
-                url.set("https://git.xxx/KMP-Demo")
-            }
-            developers {
-                developer {
-                    name.set("XXX, Inc.")
-                }
-            }
-        }
+    project.applyMavenPlugin {
+        mavenRepository = MavenRepository(
+            name = "XXX",
+            releaseUrl = "https://xxx",
+            snapshotUrl = "https://xxx"
+        )
+        pom = PomExtension(
+            repoUrl = "https://github.com/Jadyli/kotlin-multiplatform-starter",
+            httpsConnection = "scm:git:https://github.com/Jadyli/kotlin-multiplatform-starter.git",
+            gitConnection = "scm:git:ssh://git@github.com:Jadyli/kotlin-multiplatform-starter.git",
+            developerName = "XXX, Inc."
+        )
     }
 }
 
