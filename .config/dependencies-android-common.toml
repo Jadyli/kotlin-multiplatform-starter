@@ -1,7 +1,7 @@
 [versions]
 # build config
 minSdk = "21"
-targetSdk = "30"
+targetSdk = "34"
 compileSdk = "34"
 java-major = "11"
 java = "11"

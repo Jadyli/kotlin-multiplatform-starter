@@ -95,5 +95,9 @@ fun CounterLayout(models: StateFlow<CounterModel>, onEventClick: (CounterEvent) 
         ) {
             Text(text = "Randomize")
         }
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(
+            text = "https://github.com/Jadyli/kotlin-multiplatform-starter"
+        )
     }
 }

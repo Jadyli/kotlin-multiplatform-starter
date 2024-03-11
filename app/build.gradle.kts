@@ -10,8 +10,16 @@ android {
 
     defaultConfig {
         applicationId = "com.jady.kmp.demo"
-        versionCode = 1
+        versionCode = 2
         versionName = "1.0"
+    }
+    signingConfigs {
+        create("release") {
+            storeFile = project.file("keystore.jks")
+            storePassword = "123456"
+            keyAlias = "key"
+            keyPassword = "123456"
+        }
     }
 }
 
