@@ -3,7 +3,8 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(sharedCommonLibs.plugins.kotlin.multiplatform)
-    alias(sharedCommonLibs.plugins.compose)
+    alias(sharedCommonLibs.plugins.jetbrains.compose)
+    alias(sharedCommonLibs.plugins.compose.compiler)
     alias(sharedCommonLibs.plugins.ksp)
 }
 

@@ -17,8 +17,9 @@ plugins {
     alias(sharedCommonLibs.plugins.kotlin.multiplatform) apply false
     alias(sharedCommonLibs.plugins.kotlin.native.cocoapods) apply false
     alias(sharedCommonLibs.plugins.ksp) apply false
-    alias(sharedCommonLibs.plugins.compose) apply false
-    alias(androidCommonLibs.plugins.config.plugin) apply false
+    alias(sharedCommonLibs.plugins.jetbrains.compose) apply false
+    alias(sharedCommonLibs.plugins.compose.compiler) apply false
+    alias(sharedCommonLibs.plugins.config.plugin) apply false
     alias(sharedCommonLibs.plugins.maven.publish) apply false
 }
 
@@ -39,17 +40,16 @@ val sharedLibs = sharedCommonLibs
 subprojects {
     group = "com.jady.lib.framework"
     version = requireNotNull(businessLibs.framework.create("framework.$name").get().version)
-    apply(plugin = androidLibs.plugins.config.plugin.get().pluginId)
+    apply(plugin = sharedLibs.plugins.config.plugin.get().pluginId)
     apply(plugin = sharedLibs.plugins.maven.publish.get().pluginId)
 
     configure<CommonConfigExtension> {
         version {
-            minSdk = androidLibs.versions.minSdk.get().toInt()
-            targetSdk = androidLibs.versions.targetSdk.get().toInt()
+            minSdk = businessLibs.versions.minSdk.get().toInt()
+            targetSdk = businessLibs.versions.targetSdk.get().toInt()
             compileSdk = androidLibs.versions.compileSdk.get().toInt()
             java = androidLibs.versions.java.asProvider().get().toInt()
             kotlin = sharedLibs.versions.kotlin.asProvider().get()
-            composeAndroidxCompiler = sharedLibs.versions.compose.androidx.compiler.get()
         }
         vectorDrawableSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
