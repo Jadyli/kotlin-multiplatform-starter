@@ -2,7 +2,8 @@
 plugins {
     alias(androidCommonLibs.plugins.android.application)
     alias(sharedCommonLibs.plugins.kotlin.android)
-    alias(sharedCommonLibs.plugins.compose)
+    alias(sharedCommonLibs.plugins.jetbrains.compose)
+    alias(sharedCommonLibs.plugins.compose.compiler)
 }
 
 android {

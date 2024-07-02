@@ -9,7 +9,8 @@ import com.jady.lib.config.configKspExtension
 plugins {
     alias(androidCommonLibs.plugins.android.library)
     alias(sharedCommonLibs.plugins.kotlin.multiplatform)
-    alias(sharedCommonLibs.plugins.compose)
+    alias(sharedCommonLibs.plugins.jetbrains.compose)
+    alias(sharedCommonLibs.plugins.compose.compiler)
     alias(sharedCommonLibs.plugins.kotlin.native.cocoapods)
     alias(sharedCommonLibs.plugins.ksp)
 }
@@ -18,7 +19,6 @@ kotlin {
     configKMPPlugin(
         project,
         androidCommonLibs.versions.java.asProvider().get().toInt(),
-        sharedCommonLibs.versions.compose.plugin.compiler.get(),
         true
     )
 

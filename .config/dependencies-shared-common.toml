@@ -1,73 +1,98 @@
 [versions]
+config-plugin = "0.1.24"
 # https://kotlinlang.org/docs/gradle-configure-project.html#apply-the-plugin
-kotlin = "1.9.22"
+# https://github.com/JetBrains/kotlin/releases
+kotlin = "2.0.20-Beta1"
+# https://plugins.gradle.org/m2/org/gradle/kotlin/gradle-kotlin-dsl-plugins/，通过这里的 pom 文件查看对应的 kotlin 版本
+# kotlin-dsl 4.1.3 -> kotlin 1.9.10
+# kotlin-dsl 4.2.1 -> kotlin 1.9.20
+# kotlin-dsl 4.3.0 -> kotlin 1.9.22
+# kotlin-dsl 4.4.0 -> kotlin 1.9.23
 # https://plugins.gradle.org/plugin/org.gradle.kotlin.kotlin-dsl
 # https://github.com/gradle/gradle/blob/master/build-logic/kotlin-dsl/build.gradle.kts
-kotlin-dsl = "4.2.1"
-# https://github.com/Kotlin/kotlinx.serialization
-kotlin-serialization = "1.6.2"
+kotlin-dsl = "4.4.0"
+# https://github.com/Kotlin/kotlinx.serialization/releases
+kotlin-serialization = "1.7.0"
 # https://github.com/Kotlin/kotlinx-datetime/releases
-kotlin-datetime = "0.5.0"
-# https://github.com/Kotlin/kotlinx.coroutines
-kotlin-coroutines = "1.7.3"
-# 主版本：https://github.com/ktorio/ktor
+kotlin-datetime = "0.6.0"
+# https://github.com/Kotlin/kotlinx.coroutines/releases
+kotlin-coroutines = "1.9.0-RC"
+# 主版本：https://github.com/ktorio/ktor/releases
 # wasm 版本：https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental/io/ktor/ktor-client/
-ktor = "2.3.7"
+ktor = "2.3.11"
 # compose
 # https://maven.google.com/web/index.html?q=bom#androidx.compose:compose-bom
-compose-bom = "2023.10.01"
+compose-bom = "2024.06.00"
 # https://maven.google.com/web/index.html?q=compose#androidx.compose.runtime:runtime
-compose-common = "1.5.4"
-compose-material3 = "1.1.2"
-# https://search.maven.org/artifact/org.jetbrains.compose.compiler/compiler
-compose-plugin-compiler = "1.5.7"
+compose-common = "1.6.8"
+# https://maven.google.com/web/index.html?q=compose#androidx.compose.material3:material3
+compose-material3 = "1.2.1"
 # https://maven.google.com/web/index.html?q=compiler#androidx.compose.compiler:compiler
-compose-androidx-compiler = "1.5.7"
+compose-androidx-compiler = "1.5.14"
 # https://github.com/JetBrains/compose-multiplatform/releases
 # https://central.sonatype.com/artifact/org.jetbrains.compose/org.jetbrains.compose.gradle.plugin/versions
-compose-plugin = "1.6.0-dev1354"
-compose-paging = "3.2.1"
-compose-navigation = "2.7.6"
-accompanist = "0.30.1"
+# 跟 kotlin 兼容性列表：https://github.com/JetBrains/compose-multiplatform/blob/master/gradle-plugins/compose/src/main/kotlin/org/jetbrains/compose/ComposeCompilerCompatibility.kt
+compose-plugin = "1.6.11"
+# https://maven.google.com/web/index.html?q=paging#androidx.paging:paging-compose
+compose-paging = "3.3.0"
+# https://maven.google.com/web/index.html?q=navigation#androidx.navigation:navigation-common-ktx
+compose-navigation = "2.7.7"
+# https://github.com/google/accompanist/releases
+accompanist = "0.34.0"
+# https://maven.google.com/web/index.html?q=constraintlayout#androidx.constraintlayout:constraintlayout-compose
 compose-constraintlayout = "1.0.1"
-# androidx-annotation
-androidx-annotation = "1.7.1"
+# https://maven.google.com/web/index.html?q=annotation#androidx.annotation:annotation
+androidx-annotation = "1.8.0"
 # ksp 版本列表 https://github.com/google/ksp/releases?page=1
-ksp = "1.9.22-1.0.16"
+ksp = "2.0.20-Beta1-1.0.22"
 # plugins
 # https://central.sonatype.com/artifact/com.vanniktech.maven.publish/com.vanniktech.maven.publish.gradle.plugin
-maven-publish = "0.26.0"
+# https://github.com/vanniktech/gradle-maven-publish-plugin/releases
+maven-publish = "0.29.0"
 # https://plugins.gradle.org/plugin/com.gradle.plugin-publish
 gradle-publish = "1.2.1"
 # https://github.com/cashapp/molecule/releases
-molecule = "1.3.1"
+molecule = "2.0.0"
 # koin https://insert-koin.io/docs/setup/koin
-koin = "3.5.3"
-koin-compose = "1.1.2"
-koin-ktor = "3.5.3"
+# https://mvnrepository.com/artifact/io.insert-koin/koin-core
+koin = "3.5.6"
+koin-compose = "1.1.5"
+koin-ktor = "3.5.6"
 # https://mvnrepository.com/artifact/io.insert-koin/koin-ksp-compiler
 # https://mvnrepository.com/artifact/io.insert-koin/koin-annotations
-koin-annotations = "1.3.0"
+koin-annotations = "1.3.1"
 # https://kermit.touchlab.co/docs/
 # https://search.maven.org/search?q=g:co.touchlab%20a:kermit
-kermit = "2.0.2"
+kermit = "2.0.3"
 # https://github.com/cashapp/sqldelight/releases
 # https://cashapp.github.io/sqldelight/2.0.0/
-sqldelight = "2.0.1"
+sqldelight = "2.0.2"
 # https://github.com/russhwolf/multiplatform-settings/releases
 multiplatform-settings = "1.1.1"
 # https://github.com/ctripcorp/mmkv-kotlin/releases
-mmkv = "1.2.10"
+mmkv = "1.2.12"
+# https://square.github.io/okio/changelog/
+okio = "3.9.0"
+# https://github.com/ltttttttttttt/VirtualReflection/releases
+virtual-reflection = "1.2.1"
+# https://github.com/Skeptick/libres
+libres = "1.2.2"
+# https://github.com/touchlab/Stately/releases
+stately = "2.0.7"
 
 [libraries]
 # plugin source
 plugin-source-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 plugin-source-compose = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose-plugin" }
+plugin-source-ksp = { module = "com.google.devtools.ksp:symbol-processing-gradle-plugin", version.ref = "ksp" }
+plugin-source-maven-publish = { module = "com.vanniktech.maven.publish:com.vanniktech.maven.publish.gradle.plugin", version.ref = "maven-publish" }
+plugin-source-kotlin-serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
 # kotlin
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 kotlin-script-runtime = { module = "org.jetbrains.kotlin:kotlin-script-runtime", version.ref = "kotlin" }
 kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlin-datetime" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 # kotin coroutines
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
@@ -98,10 +123,10 @@ ktor-client-curl = { module = "io.ktor:ktor-client-curl", version.ref = "ktor" }
 ktor-client-jvm = { module = "io.ktor:ktor-client-jvm", version.ref = "ktor" }
 # koin
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
-koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin-compose" }
 koin-ktor = { module = "io.insert-koin:koin-ktor", version.ref = "koin-ktor" }
 koin-annotations = { module = "io.insert-koin:koin-annotations", version.ref = "koin-annotations" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-ksp-compiler = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "koin-annotations" }
 # kermit
 kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
@@ -185,8 +210,16 @@ compose-systemuicontroller = { module = "com.google.accompanist:accompanist-syst
 ksp = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = "ksp" }
 # molecule
 molecule = { module = "app.cash.molecule:molecule-runtime", version.ref = "molecule" }
+okio = { module = "com.squareup.okio:okio", version.ref = "okio" }
+virtual-reflection = { module = "com.github.ltttttttttttt:VirtualReflection", version.ref = "virtual-reflection" }
+# libres
+plugin-source-libres = { module = "io.github.skeptick.libres:gradle-plugin", version.ref = "libres" }
+libres-compose = { module = "io.github.skeptick.libres:libres-compose", version.ref = "libres" }
+stately-common = { module = "co.touchlab:stately-common", version.ref = "stately" }
+stately-concurrent-collections = { module = "co.touchlab:stately-concurrent-collections", version.ref = "stately" }
 
 [plugins]
+config-plugin = { id = "io.github.jadyli.config-plugin", version.ref = "config-plugin" }
 # kotlin
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-dsl = { id = "org.gradle.kotlin.kotlin-dsl", version.ref = "kotlin-dsl" }
@@ -196,11 +229,12 @@ kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref =
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-native-cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
-compose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 gradle-publish = { id = "com.gradle.plugin-publish", version.ref = "gradle-publish" }
 maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
-molecule = { id = "app.cash.molecule", version.ref = "molecule" }
+libres = { id = "io.github.skeptick.libres", version.ref = "libres" }
 
 [bundles]
 test = ["compose-ui-test-junit4", "compose-ui-test-manifest"]

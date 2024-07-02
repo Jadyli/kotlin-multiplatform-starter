@@ -9,6 +9,7 @@
 !.idea/copyright/
 *.iml
 *.hprof
+.kotlin
 
 # Gradle files
 .gradle/
