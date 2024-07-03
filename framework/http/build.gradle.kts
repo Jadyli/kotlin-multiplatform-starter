@@ -27,7 +27,6 @@ kotlin {
 
     sourceSets {
         val commonMain by getting {
-            // kotlin.srcDir("build/generated/ksp/metadata/commonMain")
             dependencies {
                 api(sharedCommonLibs.kotlinx.serialization)
                 api(sharedCommonLibs.ktor.client.core)

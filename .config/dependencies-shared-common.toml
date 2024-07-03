@@ -1,5 +1,5 @@
 [versions]
-config-plugin = "0.1.24"
+config-plugin = "0.1.27"
 # https://kotlinlang.org/docs/gradle-configure-project.html#apply-the-plugin
 # https://github.com/JetBrains/kotlin/releases
 kotlin = "2.0.20-Beta1"

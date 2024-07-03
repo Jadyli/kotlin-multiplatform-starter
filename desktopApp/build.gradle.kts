@@ -12,7 +12,6 @@ kotlin {
     jvm("desktop")
     sourceSets {
         commonMain {
-            kotlin.srcDir("build/generated/ksp/metadata/commonMain")
             dependencies {
                 api(bizLibs.framework.http)
                 api(bizLibs.feature.main.ui)

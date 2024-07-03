@@ -26,7 +26,6 @@ kotlin {
 
     sourceSets {
         val commonMain by getting {
-            // kotlin.srcDir("build/generated/ksp/metadata/commonMain")
             dependencies {
                 api(bizLibs.framework.http)
                 api(sharedCommonLibs.koin.core)
