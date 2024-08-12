@@ -9,9 +9,10 @@ kotlin = "2.0.10"
 # kotlin-dsl 4.3.0 -> kotlin 1.9.22
 # kotlin-dsl 4.4.0 -> kotlin 1.9.23
 # kotlin-dsl 4.5.0 -> kotlin 1.9.24
+# kotlin-dsl 5.1.0 -> kotlin 2.0.10
 # https://plugins.gradle.org/plugin/org.gradle.kotlin.kotlin-dsl
 # https://github.com/gradle/gradle/blob/master/build-logic/kotlin-dsl/build.gradle.kts
-kotlin-dsl = "4.5.0"
+kotlin-dsl = "5.1.0"
 # https://github.com/Kotlin/kotlinx.serialization/releases
 kotlin-serialization = "1.7.0"
 # https://github.com/Kotlin/kotlinx-datetime/releases
