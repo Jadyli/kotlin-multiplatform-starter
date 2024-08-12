@@ -1,6 +1,6 @@
 [versions]
 minSdk = "21"
-targetSdk = "30"
+targetSdk = "35"
 feature-startup = "0.1.0-SNAPSHOT"
 feature-main-ui = "0.1.0-SNAPSHOT"
 framework-http = "0.1.0-SNAPSHOT"

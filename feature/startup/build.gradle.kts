@@ -65,7 +65,7 @@ android {
 }
 
 dependencies {
-    addKspDependencies(listOf(KspCompiler(true, sharedCommonLibs.koin.ksp.compiler)))
+    addKspDependencies(listOf(KspCompiler(true, false, sharedCommonLibs.koin.ksp.compiler)))
 }
 
 ksp {

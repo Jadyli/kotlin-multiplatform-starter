@@ -21,6 +21,8 @@ plugins {
 allprojects {
     repositories {
         mavenCentral()
+        maven { setUrl("https://maven.aliyun.com/repository/public") }
+        maven { setUrl("https://maven.aliyun.com/repository/google") }
         maven { setUrl("https://jitpack.io") }
         google()
         maven { setUrl("https://maven.pkg.jetbrains.space/public/p/compose/dev") }
